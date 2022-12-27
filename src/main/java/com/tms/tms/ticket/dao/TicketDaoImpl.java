@@ -6,16 +6,21 @@ import com.tms.tms.ticket.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Component
 public class TicketDaoImpl implements TicketDao {
 
-    @Autowired
     private TicketRepository ticketRepository;
 
+    @Autowired
+    public TicketDaoImpl(TicketRepository ticketRepository){
+        this.ticketRepository = ticketRepository;
+    }
+
     @Override
-    public Ticket read(Long id) {
+    public Ticket get(Long id) {
         return ticketRepository.getReferenceById(id);
     }
 
@@ -32,10 +37,12 @@ public class TicketDaoImpl implements TicketDao {
     @Override
     public Ticket update(Long id, TicketDto ticketDto) {
         Ticket ticket = ticketRepository.getReferenceById(id);
+        System.out.println(ticket);
         ticket.setTitle(ticketDto.getTitle());
         ticket.setContent(ticketDto.getContent());
-        Ticket savedTicket = ticketRepository.save(ticket);
-        return savedTicket;
+        ticket.setUpdatedAt(LocalDateTime.now());
+
+        return ticketRepository.save(ticket);
     }
 
     @Override

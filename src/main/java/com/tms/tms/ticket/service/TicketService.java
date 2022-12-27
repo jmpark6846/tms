@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 
 public interface TicketService {
-    TicketResponseDto read(Long id);
+    TicketResponseDto get(Long id);
 
     TicketResponseDto create(TicketDto ticketDto);
 

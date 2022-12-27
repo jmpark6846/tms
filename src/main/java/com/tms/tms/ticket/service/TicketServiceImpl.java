@@ -14,7 +14,7 @@ public class TicketServiceImpl implements TicketService{
     private TicketDao ticketDao;
 
     @Autowired
-    TicketServiceImpl(TicketDao ticketDao){
+    public TicketServiceImpl(TicketDao ticketDao){
         this.ticketDao = ticketDao;
     }
 
@@ -27,9 +27,11 @@ public class TicketServiceImpl implements TicketService{
                 .updatedAt(ticket.getUpdatedAt())
                 .build();
     }
+
     @Override
-    public TicketResponseDto read(Long id) {
-        Ticket ticket = ticketDao.read(id);
+    public TicketResponseDto get(Long id) {
+        Ticket ticket = ticketDao.get(id);
+        System.out.println("asdf"+ticket.toString());
         return createTicketResponseDto(ticket);
     }
 

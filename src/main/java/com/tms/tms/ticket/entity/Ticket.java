@@ -1,10 +1,7 @@
 package com.tms.tms.ticket.entity;
 
 import com.tms.tms.common.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -20,7 +17,9 @@ public class Ticket extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 }
