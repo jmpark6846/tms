@@ -1,15 +1,13 @@
 package com.tms.tms.ticket;
 
-import com.tms.tms.config.SecurityConfiguration;
+import com.tms.tms.config.security.SecurityConfiguration;
 import com.tms.tms.ticket.controller.TicketController;
 import com.tms.tms.ticket.dto.TicketDto;
 import com.tms.tms.ticket.dto.TicketResponseDto;
-import com.tms.tms.ticket.entity.Ticket;
 import com.tms.tms.ticket.service.TicketServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
@@ -20,7 +18,6 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
