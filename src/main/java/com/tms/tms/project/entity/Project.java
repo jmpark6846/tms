@@ -1,9 +1,11 @@
-package com.tms.tms.ticket.entity;
+package com.tms.tms.project.entity;
 
 import com.tms.tms.auth.entity.User;
 import com.tms.tms.common.BaseEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
+
 
 @Entity
 @Getter
@@ -13,17 +15,17 @@ import lombok.*;
 @AllArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class Ticket extends BaseEntity {
+@Table(name = "project")
+public class Project extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(min = 1, max = 50)
     @Column(nullable = false)
-    private String title;
+    private String name;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
-    private String content;
-
-    @ManyToOne
-    private User author;
+    @OneToOne
+    @Column(nullable = false)
+    private User manager;
 }

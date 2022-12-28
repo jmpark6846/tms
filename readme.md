@@ -5,8 +5,19 @@
 
 ### TODO
 
-티켓 
-* 티켓 모델 추가
-* 테스트 케이스 추가
-* Service, Repository, DTO, DAO, Controller 추가
-* 
+프로젝트
+* 프로젝트 엔티티 추가
+* CRUD 추가
+
+
+티켓
+* ~~티켓 모델 추가~~
+* ~~테스트 케이스 추가~~
+* ~~Service, Repository, DTO, DAO, Controller 추가~~
+
+유저, 인증
+* ~~토큰~~
+* ~~로그인, 회원가입~~
+* ~~로그아웃~~ 
+* ~~예외 처리~~
+

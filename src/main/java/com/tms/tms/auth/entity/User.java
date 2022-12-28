@@ -47,10 +47,9 @@ public class User implements UserDetails {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @ElementCollection(fetch = FetchType.EAGER)
+    @ElementCollection
     @Builder.Default
     private List<String> roles = new ArrayList<>();
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

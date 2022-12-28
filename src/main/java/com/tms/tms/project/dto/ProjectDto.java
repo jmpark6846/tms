@@ -1,4 +1,4 @@
-package com.tms.tms.ticket.dto;
+package com.tms.tms.project.dto;
 
 import com.tms.tms.auth.entity.User;
 import jakarta.validation.constraints.NotBlank;
@@ -7,17 +7,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-
 @Data
 @Builder
 @AllArgsConstructor
-public class TicketDto {
+public class ProjectDto {
+
     @NotBlank
-    @Size(min = 1, max = 255)
-    private String title;
+    @Size(min = 1, max = 50)
+    private String name;
 
-    private String content;
-
-    private User author;
+    @NotBlank
+    private User manager;
 }

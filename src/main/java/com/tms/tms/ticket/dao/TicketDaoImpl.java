@@ -29,6 +29,7 @@ public class TicketDaoImpl implements TicketDao {
         Ticket ticket = Ticket.builder()
                 .title(ticketDto.getTitle())
                 .content(ticketDto.getContent())
+                .author(ticketDto.getAuthor())
                 .build();
 
         return ticketRepository.save(ticket);
@@ -40,6 +41,7 @@ public class TicketDaoImpl implements TicketDao {
         System.out.println(ticket);
         ticket.setTitle(ticketDto.getTitle());
         ticket.setContent(ticketDto.getContent());
+        ticket.setAuthor(ticketDto.getAuthor());
         ticket.setUpdatedAt(LocalDateTime.now());
 
         return ticketRepository.save(ticket);

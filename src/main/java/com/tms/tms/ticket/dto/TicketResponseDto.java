@@ -1,5 +1,6 @@
 package com.tms.tms.ticket.dto;
 
+import com.tms.tms.auth.entity.User;
 import lombok.*;
 import org.aspectj.lang.annotation.RequiredTypes;
 
@@ -16,6 +17,8 @@ public class TicketResponseDto {
     private Long id;
     private String title;
     private String content;
+    private User author;
+
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

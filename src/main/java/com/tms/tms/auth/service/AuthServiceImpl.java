@@ -50,7 +50,6 @@ public class AuthServiceImpl implements AuthService{
 
             return authResponseDto;
         }catch(Exception e){
-            // TODO: 예외 -> 400 bad request 되도록 핸들러 추가 필요
             throw new RuntimeException("회원가입에서 오류가 발생했습니다: "+e.getMessage());
         }
     }
