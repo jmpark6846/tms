@@ -1,6 +1,6 @@
-package com.tms.tms.user.service;
+package com.tms.tms.auth.service;
 
-import com.tms.tms.user.repository.UserRepository;
+import com.tms.tms.auth.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 

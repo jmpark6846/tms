@@ -1,10 +1,9 @@
 package com.tms.tms.config.security;
 
-import com.tms.tms.user.service.UserService;
+import com.tms.tms.auth.service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;

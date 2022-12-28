@@ -1,4 +1,4 @@
-package com.tms.tms.user.entity;
+package com.tms.tms.auth.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -18,15 +18,24 @@ import java.util.stream.Collectors;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(callSuper = true)
 @Table(name = "users")
 public class User implements UserDetails {
+
+    public User(String uid, String password, String name, String email){
+        this.uid = uid;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(unique = true, nullable = false)
     private String uid;
-
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false)
@@ -52,7 +61,7 @@ public class User implements UserDetails {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Override
     public String getPassword() {
-        return null;
+        return this.password;
     }
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

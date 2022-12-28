@@ -27,6 +27,7 @@ import com.google.gson.Gson;
 
 import java.time.LocalDateTime;
 
+
 @WebMvcTest
 @Import(TicketController.class)
 @ContextConfiguration(classes = { SecurityConfiguration.class, })
@@ -45,7 +46,7 @@ public class TicketControllerTest {
         String ticketId = "123";
 
         mockMvc.perform(
-                get("/api/tickets/"+ticketId+"/"))
+                        get("/api/tickets/"+ticketId+"/"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(123L))
                 .andExpect(jsonPath("$.title").exists())
@@ -67,9 +68,9 @@ public class TicketControllerTest {
         String content = gson.toJson(ticketDto);
 
         mockMvc.perform(
-                post("/api/tickets/")
-                        .content(content)
-                        .contentType(MediaType.APPLICATION_JSON))
+                        post("/api/tickets/")
+                                .content(content)
+                                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andDo(print());
         verify(ticketService).create(ticketDto);
@@ -98,7 +99,7 @@ public class TicketControllerTest {
 
         doNothing().when(ticketService).delete(isA(Long.class));
         mockMvc.perform(
-                delete("/api/tickets/123/"))
+                        delete("/api/tickets/123/"))
                 .andExpect(status().isOk());
 
         verify(ticketService).delete(123L);
