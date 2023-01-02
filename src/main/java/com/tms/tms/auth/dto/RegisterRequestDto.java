@@ -13,11 +13,11 @@ import lombok.*;
 @NoArgsConstructor
 public class RegisterRequestDto {
 
-    @NotBlank
-    @Size(min = 6, max = 20)
+    @NotBlank(message = "아이디를 입력해주세요.")
+    @Size(min = 6, max = 20, message = "아이디는 최소 6글자, 최대 20글자여야 합니다.")
     private String uid;
 
-    @NotBlank
+    @NotBlank(message = "비밀번호를 입력해주세요.")
     @Size(min = 8, max = 30)
     private String password;
 

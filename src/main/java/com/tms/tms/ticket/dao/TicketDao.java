@@ -4,12 +4,12 @@ import com.tms.tms.ticket.dto.TicketDto;
 import com.tms.tms.ticket.entity.Ticket;
 
 public interface TicketDao {
-    public Ticket get(Long id);
+    Ticket get(Long id);
 
-    public Ticket create(TicketDto ticketDto);
+    Ticket create(TicketDto ticketDto);
 
-    public Ticket update(Long id, TicketDto ticketDto);
+    Ticket update(Long id, TicketDto ticketDto);
 
-    public void delete(Long id);
+    void delete(Long id);
 
 }

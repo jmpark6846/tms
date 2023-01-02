@@ -1,6 +1,8 @@
 package com.tms.tms.auth.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.tms.tms.project.entity.Project;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -50,6 +52,11 @@ public class User implements UserDetails {
     @ElementCollection
     @Builder.Default
     private List<String> roles = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "manager")
+    @JsonIgnore
+    private List<Project> projects;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -2,6 +2,7 @@ package com.tms.tms.ticket.entity;
 
 import com.tms.tms.auth.entity.User;
 import com.tms.tms.common.BaseEntity;
+import com.tms.tms.project.entity.Project;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,6 +25,14 @@ public class Ticket extends BaseEntity {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
+    private TicketStatus status = TicketStatus.CLOSED;
+
+
     @ManyToOne
+    @ToString.Exclude
     private User author;
+
+    @ManyToOne
+    @ToString.Exclude
+    private Project project;
 }

@@ -7,6 +7,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,7 +21,8 @@ import java.util.List;
 
 @Component
 public class JwtTokenProvider {
-    private UserService userService;
+
+    private final UserService userService;
 
     @Value("${springboot.jwt.secret}")
     private String secretKeyStr;
@@ -28,6 +30,12 @@ public class JwtTokenProvider {
     private Key secretKey;
 
     private final long tokenValidMillisecond = 1000L * 60 * 60;
+
+
+    @Autowired
+    public JwtTokenProvider(UserService userService){
+        this.userService = userService;
+    }
 
     @PostConstruct
     protected void init() {

@@ -12,7 +12,7 @@ import java.util.Optional;
 @Component
 public class TicketDaoImpl implements TicketDao {
 
-    private TicketRepository ticketRepository;
+    private final TicketRepository ticketRepository;
 
     @Autowired
     public TicketDaoImpl(TicketRepository ticketRepository){
@@ -30,6 +30,7 @@ public class TicketDaoImpl implements TicketDao {
                 .title(ticketDto.getTitle())
                 .content(ticketDto.getContent())
                 .author(ticketDto.getAuthor())
+                .project(ticketDto.getProject())
                 .build();
 
         return ticketRepository.save(ticket);
@@ -42,6 +43,7 @@ public class TicketDaoImpl implements TicketDao {
         ticket.setTitle(ticketDto.getTitle());
         ticket.setContent(ticketDto.getContent());
         ticket.setAuthor(ticketDto.getAuthor());
+        ticket.setProject(ticketDto.getProject());
         ticket.setUpdatedAt(LocalDateTime.now());
 
         return ticketRepository.save(ticket);

@@ -1,6 +1,8 @@
 package com.tms.tms.ticket;
 
+import com.tms.tms.auth.entity.User;
 import com.tms.tms.config.security.SecurityConfiguration;
+import com.tms.tms.project.entity.Project;
 import com.tms.tms.ticket.controller.TicketController;
 import com.tms.tms.ticket.dto.TicketDto;
 import com.tms.tms.ticket.dto.TicketResponseDto;
@@ -40,8 +42,10 @@ public class TicketControllerTest {
 
     @Test
     public void getTicket() throws Exception {
+        User user = User.builder().build();
+        Project project = Project.builder().build();
         given(ticketService.get(123L))
-                .willReturn(new TicketResponseDto(123L, "제목", "내용", LocalDateTime.now(), LocalDateTime.now()));
+                .willReturn(new TicketResponseDto(123L, "제목", "내용", user, project, LocalDateTime.now(), LocalDateTime.now()));
 
         String ticketId = "123";
 
@@ -60,9 +64,9 @@ public class TicketControllerTest {
 
     @Test
     public void createTicket() throws Exception {
-        TicketDto ticketDto = new TicketDto("제목", "내용");
+        TicketDto ticketDto = new TicketDto("제목", "내용", new User(), new Project());
         given(ticketService.create(ticketDto))
-                .willReturn(new TicketResponseDto(123L, "제목", "내용", LocalDateTime.now(), LocalDateTime.now()));
+                .willReturn(new TicketResponseDto(123L, "제목", "내용", new User(), new Project(), LocalDateTime.now(), LocalDateTime.now()));
 
         Gson gson = new Gson();
         String content = gson.toJson(ticketDto);
@@ -78,10 +82,10 @@ public class TicketControllerTest {
 
     @Test
     public void updateTicket() throws Exception {
-        TicketDto ticketDto = new TicketDto("문제", "해결해주세요");
+        TicketDto ticketDto = new TicketDto("문제", "해결해주세요",  new User(), new Project());
 
         given(ticketService.update(123L, ticketDto))
-                .willReturn(new TicketResponseDto(123L, "문제", "해결해주세요", LocalDateTime.now(), LocalDateTime.now()));
+                .willReturn(new TicketResponseDto(123L, "문제", "해결해주세요",  new User(), new Project(), LocalDateTime.now(), LocalDateTime.now()));
 
         Gson gson = new Gson();
         String content = gson.toJson(ticketDto);

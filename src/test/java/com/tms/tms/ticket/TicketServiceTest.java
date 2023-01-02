@@ -5,6 +5,7 @@ import com.tms.tms.ticket.dao.TicketDaoImpl;
 import com.tms.tms.ticket.dto.TicketDto;
 import com.tms.tms.ticket.dto.TicketResponseDto;
 import com.tms.tms.ticket.entity.Ticket;
+import com.tms.tms.ticket.repository.TicketRepository;
 import com.tms.tms.ticket.service.TicketServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,11 +17,12 @@ import static org.mockito.Mockito.verify;
 
 public class TicketServiceTest {
 
-    private TicketDaoImpl ticketDao = Mockito.mock(TicketDaoImpl.class);
+    private final TicketDaoImpl ticketDao = Mockito.mock(TicketDaoImpl.class);
+    TicketRepository ticketRepository = Mockito.mock(TicketRepository.class);
     private TicketServiceImpl ticketService;
     @BeforeEach
     void beforeEach(){
-        ticketService = new TicketServiceImpl(ticketDao);
+        ticketService = new TicketServiceImpl(ticketDao, ticketRepository);
     }
 
     @Test

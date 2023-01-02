@@ -1,5 +1,7 @@
 package com.tms.tms.ticket;
 
+import com.tms.tms.auth.entity.User;
+import com.tms.tms.project.entity.Project;
 import com.tms.tms.ticket.dao.TicketDaoImpl;
 import com.tms.tms.ticket.dto.TicketDto;
 import com.tms.tms.ticket.entity.Ticket;
@@ -16,7 +18,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 public class TicketDaoTest {
 
-    private TicketRepository ticketRepository = Mockito.mock(TicketRepository.class);
+    private final TicketRepository ticketRepository = Mockito.mock(TicketRepository.class);
 
     private TicketDaoImpl ticketDao;
 
@@ -27,7 +29,7 @@ public class TicketDaoTest {
 
     @Test
     void createTicket(){
-        TicketDto ticketDto = new TicketDto("제목", "없음");
+        TicketDto ticketDto = new TicketDto("제목", "없음", new User(), new Project());
         Mockito.when(ticketRepository.save(any(Ticket.class)))
                 .then(returnsFirstArg());
 

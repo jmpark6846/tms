@@ -2,9 +2,15 @@ package com.tms.tms.project.entity;
 
 import com.tms.tms.auth.entity.User;
 import com.tms.tms.common.BaseEntity;
+import com.tms.tms.ticket.entity.Ticket;
+import com.tms.tms.ticket.repository.TicketRepository;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -21,11 +27,20 @@ public class Project extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 1, max = 50)
     @Column(nullable = false)
     private String name;
 
-    @OneToOne
-    @Column(nullable = false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name="manager_id")
     private User manager;
+
+//    @OneToMany(mappedBy = "project")
+//    private List<Ticket> tickets = new ArrayList<>();
+
+    public Project(String name, User manager) {
+        super();
+        this.name = name;
+        this.manager = manager;
+    }
+
 }
